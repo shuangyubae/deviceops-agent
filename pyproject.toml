@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deviceops-agent"
+version = "0.1.0"
+description = "Observability-driven incident diagnosis agent with tool calls, runbook retrieval, evidence tracing, and local persistence."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "DeviceOps Agent Contributors" }]
+license = { text = "MIT" }
+keywords = ["aiops", "observability", "agent", "incident-response", "runbook"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+deviceops-agent-api = "deviceops_agent.api:main"
+deviceops-agent-demo = "deviceops_agent.demo:main"
+deviceops-agent-eval = "deviceops_agent.evaluation:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["deviceops_agent*"]

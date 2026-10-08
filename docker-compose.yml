@@ -1,0 +1,21 @@
+services:
+  deviceops-agent:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DEVICEOPS_REPOSITORY: sqlite
+      DEVICEOPS_SQLITE_PATH: /app/data/deviceops.sqlite
+      DEVICEOPS_RUNBOOK_DIR: /app/data/runbooks
+      DEVICEOPS_TRACE_DIR: /app/data/traces
+      DEVICEOPS_API_HOST: 0.0.0.0
+      DEVICEOPS_API_PORT: 8000
+      DEVICEOPS_LLM_PROVIDER: deterministic
+      DEVICEOPS_LLM_BASE_URL: https://api.openai.com/v1
+      DEVICEOPS_LLM_MODEL: gpt-4o-mini
+      DEVICEOPS_LLM_TIMEOUT_SECONDS: 15
+    volumes:
+      - deviceops-data:/app/data
+
+volumes:
+  deviceops-data:
